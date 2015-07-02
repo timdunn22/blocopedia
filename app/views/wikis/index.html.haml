@@ -1,2 +1,14 @@
-%h1 Wikis#index
-%p Find me in app/views/wikis/index.html.haml
+%h1 Wikis
+.row
+  .col-md-8
+    - @wikis.each do |wiki|
+      .media
+        .media-body
+          %h4.media-heading
+            = link_to wiki.title, topic
+          %small
+            = wiki.body
+    = will_paginate @wikis
+  .col-md-4
+    - if policy(Wiki.new).create?
+      = link_to "New Wiki", new_wiki_path, class: 'btn btn-success'

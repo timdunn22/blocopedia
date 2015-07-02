@@ -1,0 +1,16 @@
+= form_for [wiki] do |f|
+  - if wiki.errors.any?
+    .alert.alert-danger
+      %h4
+        There are #{pluralize(topic.errors.count, "error")}.
+      %ul
+        - wiki.errors.full_messages.each do |msg|
+          %li= msg
+  .form-group
+    = f.label :title
+    = f.text_field :title, class: 'form-control', placeholder: "Enter Wiki title"
+  .form-group
+    = f.label :body
+    = f.text_area :body, class: 'form-control', placeholder: "Enter Wiki body"
+  .form-group
+    = f.submit "Save", class: 'btn btn-success'

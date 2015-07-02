@@ -2,19 +2,12 @@ Rails.application.routes.draw do
 
 
 
-  get 'wikis/index'
-
-  get 'wikis/edit'
-
-  get 'wikis/new'
-
-  get 'wikis/show'
-
   get 'welcome/index'
   devise_for :users, :controllers => {:registrations => "devise/registrations"} do
     get '/register' => 'devise/registrations#new', :as => :new_user_registration
   end
   resources :users
+  resources :wikis
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
