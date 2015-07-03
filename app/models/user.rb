@@ -3,4 +3,8 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
+   after_initialize :add_role
+   def add_role
+     self.role ||= "standard" if self.role.nil?
+   end
 end
