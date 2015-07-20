@@ -2,7 +2,7 @@
   - if wiki.errors.any?
     .alert.alert-danger
       %h4
-        There are #{pluralize(topic.errors.count, "error")}.
+        There are #{pluralize(wiki.errors.count, "error")}.
       %ul
         - wiki.errors.full_messages.each do |msg|
           %li= msg
@@ -12,5 +12,26 @@
   .form-group
     = f.label :body
     = f.text_area :body, class: 'form-control', placeholder: "Enter Wiki body"
+  - if current_user.role == "admin" || current_user.role == "premium"
+    .form-group
+      = f.label :private, class: 'checkbox'
+      = f.check_box :private
+      Private Wiki
+  %h3 Add or Remove Collaborators from this Wiki
+  %table.table
+    %thead
+      %tr
+        - ["Name", "Email", "Give Access"].each do |column|
+          %th= column
+    %tbody
+      - User.all.each do |user|
+        - unless user == current_user || user.role == "admin"
+          = f.fields_for :collaborators, wiki.collaborators.where(user_id: user.id).first_or_initialize do |c|
+            %tr{id: "user-#{user.id}"}
+              %td= user.name
+              %td= user.email
+              - c.object.active = !c.object.new_record?
+              %td= c.check_box :active
+              = c.hidden_field :user_id
   .form-group
     = f.submit "Save", class: 'btn btn-success'

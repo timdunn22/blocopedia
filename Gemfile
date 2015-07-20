@@ -3,11 +3,16 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
+gem 'figaro', '1.0'
+gem 'stripe'
 # Use sqlite3 as the database for Active Record
 gem 'haml-rails'
 gem 'haml-lint'
 gem 'bootstrap-sass'
 gem 'sqlite3'
+group :development do
+  gem "better_errors"
+end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

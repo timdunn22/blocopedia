@@ -9,11 +9,11 @@ protected
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) do |u|
-      u.permit(:name, :username, :email, :password, :password_confirmation)
+      u.permit(:name, :username, :email, :password, :password_confirmation,:role)
     end
     devise_parameter_sanitizer.for(:account_update) do |u|
       u.permit(:name,
-        :email, :username, :password, :password_confirmation, :current_password)
+        :email, :username, :password, :password_confirmation, :current_password, :role)
     end
   end
 end

@@ -3,11 +3,12 @@ Rails.application.routes.draw do
 
 
   get 'welcome/index'
-  devise_for :users, :controllers => {:registrations => "devise/registrations"} do
+  devise_for :users, :controllers => {:registrations => "registrations"} do
     get '/register' => 'devise/registrations#new', :as => :new_user_registration
   end
   resources :users
   resources :wikis
+  resources :charges, only: [:new, :create]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

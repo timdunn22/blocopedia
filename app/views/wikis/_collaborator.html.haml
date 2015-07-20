@@ -1,0 +1,15 @@
+%h3 Add or Remove Collaborators from this Wiki
+%table.table
+  %thead
+    %tr
+      - ["Name", "Email", "Give Access"].each do |column|
+        %th= column
+  %tbody
+    - User.all.each do |user|
+      - unless user == current_user || user.role == "admin"
+        = f.fields_for :collaborators do |c|
+          %tr
+            %td= user.name
+            %td= user.email
+            %td= c.checkbox :user
+            

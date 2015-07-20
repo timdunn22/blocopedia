@@ -14,8 +14,11 @@ class UsersController < ApplicationController
        redirect_to edit_user_registration_path
      end
    }
- end
+  end
+
   def show
+    @private_wikis = Wiki.where(user: current_user, private: true)
+    @public_wikis = Wiki.where(user: current_user, private: false)
   end
 
   def index
@@ -24,7 +27,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name)
+    params.require(:user).permit(:name,:role)
   end
 
 end

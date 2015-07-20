@@ -5,10 +5,9 @@
       .media
         .media-body
           %h4.media-heading
-            = link_to wiki.title, topic
+            = link_to (markdown_to_html wiki.title), wiki
           %small
             = wiki.body
-    = will_paginate @wikis
   .col-md-4
     - if policy(Wiki.new).create?
       = link_to "New Wiki", new_wiki_path, class: 'btn btn-success'

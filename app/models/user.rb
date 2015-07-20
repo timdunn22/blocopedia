@@ -7,4 +7,7 @@ class User < ActiveRecord::Base
    def add_role
      self.role ||= "standard" if self.role.nil?
    end
+
+   has_many :wikis, dependent: :destroy
+   has_many :collaborators, through: :wikis, dependent: :destroy
 end
