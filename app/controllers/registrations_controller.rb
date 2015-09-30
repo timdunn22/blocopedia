@@ -14,7 +14,7 @@ class RegistrationsController < Devise::RegistrationsController
       if is_not_premium
         @new_params = params.require(:user).permit(:email,:role,:name,:username)
       else
-        @new_params = params.require(:user).permit(:email,:name,:username,)
+        @new_params = params.require(:user).permit(:email,:name,:username)
       end
       @change_password = false
 
