@@ -9,12 +9,17 @@ gem 'stripe'
 gem 'haml-rails'
 gem 'haml-lint'
 gem 'bootstrap-sass'
-gem "heroku"
+
 
 
 group :production do
   gem 'puma'
   gem "pg"
+end
+
+group :development do
+  gem "better_errors"
+
 end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
