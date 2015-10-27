@@ -9,9 +9,11 @@ gem 'stripe'
 gem 'haml-rails'
 gem 'haml-lint'
 gem 'bootstrap-sass'
-gem 'sqlite3'
 group :development do
   gem "better_errors"
+end
+group :production do
+  gem 'pg'
 end
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
