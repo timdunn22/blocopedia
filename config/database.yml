@@ -25,5 +25,6 @@ production:
   encoding: utf8
   database: dc4out8g78lp56
   host: ec2-54-83-36-203.compute-1.amazonaws.com
+  port: 5432
   pool: 5
   password: tXQLJsPxVZHhUCA9T6HvIV-w0-
